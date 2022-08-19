@@ -1,6 +1,20 @@
 from random import shuffle, choice
 import sys
 
+def conv(guess, word):
+	ans = []
+	n = len(guess)
+	for i in range(len(word)):
+		if i < n and guess[i] == word[i]:
+			ans.append(word[i])
+		else:
+			ans.append('_')
+	return ''.join(ans)
+
+def hint(word, words):
+	arr = list(map(lambda x: conv(word, x), words))
+	return min(arr, key = lambda x: x.count('_'))
+
 def main():
 	loc = 'words.txt'
 	if len(sys.argv) == 2:
@@ -25,7 +39,7 @@ def main():
 	print("Anagram:", jumbled)
 	ans = input("Guess: ").strip()
 	while ans not in words:
-		print('Incorrect! Try again')
+		print(hint(ans, words))
 		ans = input("Guess: ").strip()
 	print("Hurray! Correct guess")
 
