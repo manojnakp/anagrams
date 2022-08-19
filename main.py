@@ -1,3 +1,4 @@
+#!/bin/python3
 from random import shuffle, choice
 import sys
 
