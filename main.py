@@ -24,10 +24,10 @@ def main():
 
 	print("Anagram:", jumbled)
 	ans = input("Guess: ").strip()
-	if ans in words:
-		print("Hurray! Correct guess")
-	else:
-		print("Incorrect")
+	while ans not in words:
+		print('Incorrect! Try again')
+		ans = input("Guess: ").strip()
+	print("Hurray! Correct guess")
 
 if __name__ == '__main__':
 	try:
