@@ -16,8 +16,9 @@ def main():
 		lines.remove('')
 	lines = map(lambda x: ' '.join(sorted(x.split())), lines)
 	lines = sorted(lines, key = lambda x: ''.join(sorted(x[:x.index(' ')])))
-	print('\n'.join(lines))
-	print('\n')
+	with open('sorted.txt', 'w') as f:
+		f.write('\n'.join(lines))
+		f.write('\n')
 
 if __name__ == '__main__':
 	main()
