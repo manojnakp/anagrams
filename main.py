@@ -2,8 +2,16 @@ from random import shuffle, choice
 import sys
 
 def main():
-	with open('words.txt') as f:
-		lines = f.read().split('\n')
+	loc = 'words.txt'
+	if len(sys.argv) == 2:
+		loc = sys.argv[1]
+	try:
+		f = open(loc)
+	except FileNotFoundError:
+		sys.exit(f'Reuested file "{loc}" is not found')
+	else:
+		with f:
+			lines = f.read().split('\n')
 
 	if '' in lines:
 		lines.remove('')
